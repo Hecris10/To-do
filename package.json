@@ -6,8 +6,7 @@
   "homepage:": "https://hecris10.github.io/to-do/",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build",
-    "deploy": "gh-pages -d dist"
+    "build": "parcel build"
   },
   "author": "Hecris10",
   "license": "MIT",
