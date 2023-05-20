@@ -5,11 +5,12 @@ name: GitHub Pages
 
 on:
   push:
-    branches: ["master"]
+    branches:
+      - master
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
   issues: write
   packages: write
   pull-requests: write
@@ -19,41 +20,30 @@ permissions:
   checks: write
   deployments: write
   discussions: write
-  pages: read
+  pages: write
   repository-projects: write
   security-events: write
 
 jobs:
-  build:
+  ci_cd:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow}}-${{ github.ref }}
 
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm install
-      - run: npm ci
-      - run: npm run build --if-present
-
-  deploy:
-    runs-on: ubuntu-latest
-    concurrency:
-      group: ${{ github.workflow}}-${{ github.ref }}
-    steps:
-      - uses: actions/checkout@v3
 
       - name: Deploy to GitHub Pages
-        uses: actions/setup-node@v2
-        with:
-          node-version: "14"
+        uses: actions/setup-node@v3
 
       - name: Cache dependecies
         uses: actions/cache@v3
