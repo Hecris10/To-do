@@ -33,6 +33,7 @@ const formatDate = (date) => {
 
 const saveItems = (tarefas) => {
   localStorage.setItem("tarefas", JSON.stringify(tarefas));
+  alert("Sua Terafa foi salva com sucesso!");
 };
 
 const loadItems = (allItems) => {
@@ -110,7 +111,6 @@ const onLoad = () => {
 };
 
 const newTask = () => {
-  alert("Nova tarefa");
   const taskName = document.getElementById("new-task-name").value;
   const taskInit = document.getElementById("new-task-init").value;
   const taskEnd = document.getElementById("new-task-end").value;
