@@ -49,9 +49,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - run: |
-          sed -i '5i\ "homepage": "\to-do",' package.json
-
       - run: npm install
       - run: npm ci
       - run: npm run build
