@@ -2,19 +2,23 @@
   "name": "to-do",
   "version": "1.0.0",
   "description": "To-to list project with javascript vanilla",
-  "source": "src/index.html",
   "homepage:": "https://hecris10.github.io/to-do/",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
+    "start": "parcel ./src/index.html",
+    "lint": "eslint \"./src/js/**\"",
+    "prebuild": "npx rimraf build",
+    "build": "parcel build --public-url ./ src/index.html",
+    "package": "npm run lint &&  && npm rin prebuild && npm run build"
   },
   "author": "Hecris10",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "eslint": "^8.41.0",
     "gh-pages": "^5.0.0",
     "parcel": "^2.8.3",
+    "parcel-plugin-static-files-copy": "^2.6.0",
     "prettier": "^2.8.8"
   },
   "publishConfig": {
@@ -22,5 +26,9 @@
   },
   "dependencies": {
     "gitignore": "^0.7.0"
+  },
+  "staticFiles": {
+    "staticPath": "public",
+    "watcherGlob": "**"
   }
 }
