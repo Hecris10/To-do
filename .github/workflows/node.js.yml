@@ -5,13 +5,23 @@ name: GitHub Pages
 
 on:
   push:
-    branches: ["master", "gh-pages"]
+    branches: ["master"]
   pull_request:
-    branches: ["master", "gh-pages"]
+
 permissions:
-  pull-requests: write
+  contents: read
   issues: write
+  packages: write
+  pull-requests: write
+  statuses: write
+  id-token: write
+  actions: write
+  checks: write
+  deployments: write
+  discussions: write
+  pages: read
   repository-projects: write
+  security-events: write
 
 jobs:
   build:
@@ -60,5 +70,5 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PA_TOKEN }}
           publish_dir: ./dist
