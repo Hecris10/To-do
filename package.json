@@ -1,0 +1,27 @@
+{
+  "name": "to-do",
+  "version": "1.0.0",
+  "description": "To-to list project with javascript vanilla",
+  "source": "src/index.html",
+  "homepage:": "https://hecris10.github.io/to-do/",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
+    "deploy": "gh-pages -d dist"
+  },
+  "author": "Hecris10",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "gh-pages": "^5.0.0",
+    "parcel": "^2.8.3",
+    "prettier": "^2.8.8"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "gitignore": "^0.7.0"
+  }
+}
